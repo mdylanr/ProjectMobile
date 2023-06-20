@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:medic_petcare/Provider/UserProvider.dart';
 import 'package:medic_petcare/Routes/Routes.dart';
@@ -93,7 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
       });
     } else {
       setState(() {
-        errPassword = "Passowrd wajib diisi";
+        errPassword = "Password wajib diisi";
       });
     }
   }

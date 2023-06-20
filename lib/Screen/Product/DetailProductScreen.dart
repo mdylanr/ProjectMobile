@@ -199,7 +199,7 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
               title: "Pesan Sekarang",
               onPressed: () async {
                 var message = Uri.encodeComponent(
-                    'Halo kak, Barang (${widget.data['name']}) masih ready?');
+                    'Halo kak, Barang ${widget.data['name']} masih ready?');
                 var whatsappUrl =
                     "whatsapp://send?phone=6282234702123" "&text=$message";
                 launch(whatsappUrl);

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medic_petcare/Provider/UserProvider.dart';
 import 'package:medic_petcare/Routes/Routes.dart';
-
 import 'package:medic_petcare/Utils/Images.dart';
 import 'package:medic_petcare/Utils/Storage.dart';
 import 'package:medic_petcare/Utils/StorageKey.dart';
@@ -69,7 +68,7 @@ class _AccountLandingScreenState extends State<AccountLandingScreen> {
             height: 8,
           ),
           TextWidget(
-            label: "Copyright 2023 Kopi",
+            label: "Copyright 2023 Coffee Station",
             color: fontGreyColor3,
             type: 'l1',
           ),
