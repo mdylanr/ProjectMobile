@@ -70,7 +70,6 @@ class _SettingsAccountState extends State<SettingsAccountScreen> {
     if (!serviceEnabled) {
       return Future.error('Location services are disabled.');
     }
-
     permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
