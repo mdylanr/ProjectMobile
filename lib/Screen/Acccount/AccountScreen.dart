@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medic_petcare/Provider/UserProvider.dart';
 import 'package:medic_petcare/Routes/Routes.dart';
-import 'package:medic_petcare/Utils/Images.dart';
 import 'package:medic_petcare/Utils/Storage.dart';
 import 'package:medic_petcare/Utils/StorageKey.dart';
 import 'package:medic_petcare/Utils/Themes.dart';

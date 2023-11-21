@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:medic_petcare/Provider/UserProvider.dart';
 import 'package:medic_petcare/Routes/Routes.dart';
@@ -6,10 +5,7 @@ import 'package:medic_petcare/Utils/Snackbar.dart';
 import 'package:medic_petcare/Utils/Themes.dart';
 import 'package:medic_petcare/Widgets/ButtonWidget.dart';
 import 'package:medic_petcare/Widgets/HeaderWidget.dart';
-import 'package:medic_petcare/Widgets/ImageWidget.dart';
 import 'package:medic_petcare/Widgets/InputWidget.dart';
-import 'package:medic_petcare/Widgets/ModalOptionWidget.dart';
-import 'package:medic_petcare/Widgets/TextWidget.dart';
 import 'package:provider/provider.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -94,7 +90,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       });
     } else {
       setState(() {
-        errName = "Email wajib diisi";
+        errName = "Nama wajib diisi";
       });
     }
   }
@@ -135,48 +131,46 @@ class _RegisterScreenState extends State<RegisterScreen> {
           vertical: 24,
           horizontal: defaultMargin,
         ),
-        child: SafeArea(
-          child: Column(
-            children: [
-              InputWidget(
-                title: "Nama",
-                hintText: "Masukkan Nama Lengkap",
-                controller: nameController,
-                errText: errName,
-                onChanged: onChangeName,
+        child: Column(
+          children: [
+            InputWidget(
+              title: "Nama",
+              hintText: "Masukkan Nama Lengkap",
+              controller: nameController,
+              errText: errName,
+              onChanged: onChangeName,
+            ),
+            InputWidget(
+              title: "Email",
+              hintText: "Masukkan Alamat Email",
+              controller: emailController,
+              errText: errEmail,
+              type: TextInputType.emailAddress,
+              onChanged: onChangeEmail,
+            ),
+            InputWidget(
+              title: "Password",
+              hintText: "Masukkan Password",
+              obscure: true,
+              controller: passwordController,
+              errText: errPassword,
+              onChanged: onChangePassword,
+            ),
+            Container(
+              margin: const EdgeInsets.only(
+                top: 24,
               ),
-              InputWidget(
-                title: "Email",
-                hintText: "Masukkan Alamat Email",
-                controller: emailController,
-                errText: errEmail,
-                type: TextInputType.emailAddress,
-                onChanged: onChangeEmail,
+              width: double.infinity,
+              child: ButtonWidget(
+                title: "Daftar",
+                isLoading: isLoading,
+                theme: isLoading ? 'disable' : 'primary',
+                onPressed: () async {
+                  handleSubmit();
+                },
               ),
-              InputWidget(
-                title: "Password",
-                hintText: "Masukkan Password",
-                obscure: true,
-                controller: passwordController,
-                errText: errPassword,
-                onChanged: onChangePassword,
-              ),
-              Container(
-                margin: const EdgeInsets.only(
-                  top: 24,
-                ),
-                width: double.infinity,
-                child: ButtonWidget(
-                  title: "Daftar",
-                  isLoading: isLoading,
-                  theme: isLoading ? 'disable' : 'primary',
-                  onPressed: () async {
-                    handleSubmit();
-                  },
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

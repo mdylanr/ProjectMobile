@@ -2,13 +2,13 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:medic_petcare/Provider/UserProvider.dart';
-import 'package:medic_petcare/Routes/Routes.dart';
 import 'package:medic_petcare/Utils/Snackbar.dart';
 import 'package:medic_petcare/Utils/Themes.dart';
 import 'package:medic_petcare/Widgets/ButtonWidget.dart';
 import 'package:medic_petcare/Widgets/HeaderWidget.dart';
 import 'package:medic_petcare/Widgets/InputWidget.dart';
 import 'package:provider/provider.dart';
+import 'package:geolocator/geolocator.dart';
 
 class SettingsAccountScreen extends StatefulWidget {
   const SettingsAccountScreen({super.key});
@@ -62,6 +62,31 @@ class _SettingsAccountState extends State<SettingsAccountScreen> {
     } catch (e) {}
   }
 
+  Future<Position> _determinePosition() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      return Future.error('Location services are disabled.');
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return Future.error('Location permissions are denied');
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      return Future.error(
+          'Location permissions are permanently denied, we cannot request permissions.');
+    }
+
+    return await Geolocator.getCurrentPosition();
+  }
+
   handleSubmit() async {
     bool valid = true;
     setState(() {
@@ -90,8 +115,6 @@ class _SettingsAccountState extends State<SettingsAccountScreen> {
           'name': nameController.text,
         };
       }
-
-      print(body);
 
       Provider.of<UserProvider>(
         context,
@@ -124,7 +147,7 @@ class _SettingsAccountState extends State<SettingsAccountScreen> {
           showSnackBar(
             context,
             "Error",
-            subtitle: "gaga;",
+            subtitle: "gagal",
             position: 'TOP',
             type: 'error',
             duration: 2,

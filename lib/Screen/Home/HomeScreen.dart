@@ -6,7 +6,6 @@ import 'package:medic_petcare/Screen/Product/DetailProductScreen.dart';
 import 'package:medic_petcare/Utils/Images.dart';
 import 'package:medic_petcare/Utils/Utils.dart';
 import 'package:medic_petcare/Widgets/ProductCardWidget.dart';
-import 'package:medic_petcare/Widgets/BadgeWidget.dart';
 import 'package:medic_petcare/Widgets/ImageWidget.dart';
 import 'package:medic_petcare/Utils/Themes.dart';
 import 'package:medic_petcare/Widgets/LoadingWidget.dart';

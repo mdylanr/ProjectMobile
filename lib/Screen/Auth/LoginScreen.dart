@@ -133,116 +133,112 @@ class _LoginScreenState extends State<LoginScreen> {
       onWillPop: onWillPop,
       child: Scaffold(
         backgroundColor: whiteColor,
-        body: Stack(
-          children: [
-            CustomScrollView(
-              slivers: [
-                SliverAppBar(
-                  expandedHeight: 292,
-                  flexibleSpace: FlexibleSpaceBar(
-                    background: ImageWidget(
-                      image: backgroundLogin,
-                      width: double.infinity,
-                    ),
-                  ),
-                  backgroundColor: whiteColor,
-                  bottom: PreferredSize(
-                    preferredSize: const Size.fromHeight(
-                      0.0,
-                    ),
-                    child: Container(
-                      padding: EdgeInsets.fromLTRB(
-                          defaultMargin, 24, defaultMargin, 32),
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.vertical(
-                          top: Radius.circular(
-                            25,
-                          ),
-                        ),
-                        color: whiteColor,
+        body: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              expandedHeight: 292,
+              flexibleSpace: FlexibleSpaceBar(
+                background: ImageWidget(
+                  image: backgroundLogin,
+                  width: double.infinity,
+                ),
+              ),
+              backgroundColor: whiteColor,
+              bottom: PreferredSize(
+                preferredSize: const Size.fromHeight(
+                  0.0,
+                ),
+                child: Container(
+                  padding:
+                      EdgeInsets.fromLTRB(defaultMargin, 24, defaultMargin, 32),
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.vertical(
+                      top: Radius.circular(
+                        25,
                       ),
                     ),
+                    color: whiteColor,
                   ),
                 ),
-                SliverToBoxAdapter(
-                  child: Container(
-                    padding: EdgeInsets.fromLTRB(
-                        defaultMargin, 0, defaultMargin, 32),
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.vertical(
-                        top: Radius.circular(
-                          25,
-                        ),
-                      ),
-                      color: whiteColor,
-                    ),
-                    child: Column(
-                      children: [
-                        TextWidget(
-                          label: "Coffee Station",
-                          type: 's1',
-                          color: primaryColor,
-                          weight: 'bold',
-                        ),
-                        const SizedBox(
-                          height: 24,
-                        ),
-                        InputWidget(
-                          title: "Email",
-                          hintText: "Masukkan Alamat Email",
-                          controller: emailController,
-                          errText: errEmail,
-                          type: TextInputType.emailAddress,
-                          onChanged: onChangeEmail,
-                        ),
-                        InputWidget(
-                          title: "Password",
-                          hintText: "Masukkan Password",
-                          obscure: true,
-                          controller: passwordController,
-                          errText: errPassword,
-                          onChanged: onChangePassword,
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(
-                            top: 24,
-                          ),
-                          width: double.infinity,
-                          child: ButtonWidget(
-                            title: "Masuk",
-                            isLoading: isLoading,
-                            theme: isLoading ? 'disable' : 'primary',
-                            onPressed: () async {
-                              handleSubmit();
-                            },
-                          ),
-                        ),
-                        Divider(
-                          height: 24,
-                          color: borderColor,
-                        ),
-                        SizedBox(
-                          width: double.infinity,
-                          child: ButtonWidget(
-                            title: "Daftar",
-                            type: 'outline',
-                            theme: isLoading ? 'disable' : 'primary',
-                            onPressed: () async {
-                              Navigator.pushNamed(
-                                context,
-                                Routes.registerScreen,
-                              );
-                            },
-                          ),
-                        ),
-                      ],
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: Container(
+                padding:
+                    EdgeInsets.fromLTRB(defaultMargin, 0, defaultMargin, 32),
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.vertical(
+                    top: Radius.circular(
+                      25,
                     ),
                   ),
-                )
-              ],
-            ),
+                  color: whiteColor,
+                ),
+                child: Column(
+                  children: [
+                    TextWidget(
+                      label: "Coffee Station",
+                      type: 's1',
+                      color: primaryColor,
+                      weight: 'bold',
+                    ),
+                    const SizedBox(
+                      height: 24,
+                    ),
+                    InputWidget(
+                      title: "Email",
+                      hintText: "Masukkan Alamat Email",
+                      controller: emailController,
+                      errText: errEmail,
+                      type: TextInputType.emailAddress,
+                      onChanged: onChangeEmail,
+                    ),
+                    InputWidget(
+                      title: "Password",
+                      hintText: "Masukkan Password",
+                      obscure: true,
+                      controller: passwordController,
+                      errText: errPassword,
+                      onChanged: onChangePassword,
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(
+                        top: 24,
+                      ),
+                      width: double.infinity,
+                      child: ButtonWidget(
+                        title: "Masuk",
+                        isLoading: isLoading,
+                        theme: isLoading ? 'disable' : 'primary',
+                        onPressed: () async {
+                          handleSubmit();
+                        },
+                      ),
+                    ),
+                    Divider(
+                      height: 24,
+                      color: borderColor,
+                    ),
+                    SizedBox(
+                      width: double.infinity,
+                      child: ButtonWidget(
+                        title: "Daftar",
+                        type: 'outline',
+                        theme: isLoading ? 'disable' : 'primary',
+                        onPressed: () async {
+                          Navigator.pushNamed(
+                            context,
+                            Routes.registerScreen,
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            )
           ],
         ),
       ),

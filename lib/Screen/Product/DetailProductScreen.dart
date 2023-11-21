@@ -195,15 +195,27 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
             bottom: 20,
             left: defaultMargin,
             right: defaultMargin,
-            child: ButtonWidget(
-              title: "Pesan Sekarang",
-              onPressed: () async {
-                var message = Uri.encodeComponent(
-                    'Halo kak, Barang ${widget.data['name']} masih ready?');
-                var whatsappUrl =
-                    "whatsapp://send?phone=6282234702123" "&text=$message";
-                launch(whatsappUrl);
-              },
+            child: Column(
+              children: [
+                ButtonWidget(
+                  title: "Pesan Sekarang",
+                  onPressed: () async {
+                    var message = Uri.encodeComponent(
+                        'Halo kak, Barang ${widget.data['name']} masih ready?');
+                    var whatsappUrl =
+                        "whatsapp://send?phone=6282234702123" "&text=$message";
+                    launch(whatsappUrl);
+                  },
+                ),
+                // const SizedBox(height: 10), // Spacing between buttons
+                // ButtonWidget(
+                //   title: "Lokasi Sekarang",
+                //   onPressed: () {
+                //     // Handle button pressed action for "Lokasi Sekarang" button
+                //     // Add your code here
+                //   },
+                // ),
+              ],
             ),
           )
         ],

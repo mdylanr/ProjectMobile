@@ -110,12 +110,6 @@ class Network {
         }
       }
 
-      // if (data != null) {
-      //   for (var item in data) {
-      //     responseMultipart.fields['suara[]'] = item['suara'];
-      //   }
-      //   print(responseMultipart.fields);
-      // }
       responseMultipart.files
           .add(await http.MultipartFile.fromPath(keyFile, body![keyFile]));
       responseMultipart.headers.addAll(headers);
@@ -139,18 +133,8 @@ class Network {
       var responJson = json.decode(response!.body);
       try {
         if (responJson['code'].runtimeType != Null) {
-          if (isResultTokenExpired(responJson['code'], responJson['message'])) {
-            // showSnackBar(
-            //   navigatorKey.currentContext!,
-            //   "ticketListScreen.tokenExpiredTitle",
-            //   subtitle: "ticketListScreen.tokenExpired",
-            //   position: "TOP",
-            //   type: "danger",
-            //   duration: 3,
-            // );
-            // navigatorKey.currentState
-            //     ?.pushReplacementNamed(Navigation.loginInputScreen);
-          }
+          if (isResultTokenExpired(
+              responJson['code'], responJson['message'])) {}
         }
       } catch (e) {}
       return responJson;
